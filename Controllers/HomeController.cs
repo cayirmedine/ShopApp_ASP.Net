@@ -10,6 +10,12 @@ namespace ShopApp.WebUI.Controllers
     {
         public IActionResult Index()
         {
+            int hour = DateTime.Now.Hour;
+
+            ViewBag.Greeting = hour < 12 ? "Good Morning" : "Hello";
+
+            ViewBag.UserName = "BaKu";
+
             return View();
         }
 
