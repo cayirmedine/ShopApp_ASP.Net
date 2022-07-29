@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model ShopApp.WebUI.Models.Product
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,6 +9,8 @@
     <title>Product</title>
 </head>
 <body>
-    product/details
+    <p>Product Name: @Model.Name</p>
+    <p>Price: @Model.Price</p>
+    <p>Details: @Model.Description</p>
 </body>
 </html>
