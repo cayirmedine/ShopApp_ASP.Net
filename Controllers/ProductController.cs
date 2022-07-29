@@ -8,19 +8,19 @@ namespace ShopApp.WebUI.Controllers
 {
     public class ProductController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "product/index";
+            return View();
         }
 
-        public string List()
+        public IActionResult List()
         {
-            return "product/list";
+            return View();
         }
 
-        public string Details(int id)
+        public IActionResult Details(int id)
         {
-            return "product/details/"+id;
+            return View();
         }
     }
 }
