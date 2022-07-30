@@ -27,8 +27,9 @@ namespace ShopApp.WebUI.Controllers
         {
             var products = new List<Product>()
             {
-                new Product { Name="Iphone 8", Price=3000, Description="Iphone" },
-                new Product { Name="Iphone X", Price=6000, Description="Iphone" }
+                new Product { Name="Iphone 8", Price=3000, Description="Iphone", isApproved=true },
+                new Product { Name="Iphone X", Price=6000, Description="Iphone", isApproved=true },
+                new Product { Name="Iphone 11", Price=9000, Description="Iphone" }
             };
 
             //ViewBag.Category = "Phones";

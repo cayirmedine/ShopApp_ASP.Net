@@ -1,5 +1,11 @@
 ﻿@model ShopApp.WebUI.ViewModels.ProductViewModel
 
+@{ 
+    var popularClass = Model.Products.Count > 2 ? "popular" : "";
+    var products = Model.Products;
+    var categoryName = Model.Category.Name;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Product</title>
+    <style>
+        .popular {
+            color: green;
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
     @*<h3>@ViewBag.Category</h3>*@
@@ -25,9 +37,42 @@
             <p>@Model[1].Description</p>
         </div>*@
 
-    <h3>@Model.Category.Name</h3>
+    <h3 class="@popularClass">@categoryName</h3>
 
-    <div>
+    @if(products.Count == 0)
+    {
+        <p style="color:red;">No product</p>
+    } 
+    else
+    {
+<ul>
+    @foreach (var product in products)
+    {
+        @if (product.isApproved)
+        {
+            <li>
+                <div>
+                    <p>@product.Name</p>
+                    <p>@product.Price</p>
+                    <p>@product.Description</p>
+                </div>
+            </li>
+        }
+        else
+        {
+            <li style="color: lightgray;">
+                <div>
+                    <p>@product.Name</p>
+                    <p>@product.Price</p>
+                    <p>@product.Description</p>
+                </div>
+            </li>
+        }
+    }
+</ul>
+    }
+
+    @*<div>
         <p>@Model.Products[0].Name</p>
         <p>@Model.Products[0].Price</p>
         <p>@Model.Products[0].Description</p>
@@ -37,7 +82,7 @@
         <p>@Model.Products[1].Name</p>
         <p>@Model.Products[1].Price</p>
         <p>@Model.Products[1].Description</p>
-    </div>
+    </div>*@
 
 </body>
 </html>
