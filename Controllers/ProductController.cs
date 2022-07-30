@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShopApp.WebUI.Models; //import
+using ShopApp.WebUI.ViewModels;
 
 namespace ShopApp.WebUI.Controllers
 {
@@ -24,7 +25,26 @@ namespace ShopApp.WebUI.Controllers
 
         public IActionResult List()
         {
-            return View();
+            var products = new List<Product>()
+            {
+                new Product { Name="Iphone 8", Price=3000, Description="Iphone" },
+                new Product { Name="Iphone X", Price=6000, Description="Iphone" }
+            };
+
+            //ViewBag.Category = "Phones";
+
+            var category = new Category { Name = "Phones", Description = "Phone Category" };
+            //ViewBag.Category = category;
+
+            var productViewModel = new ProductViewModel()
+            {
+                Category = category,
+                Products = products
+            };
+
+            //return View(products);
+
+            return View(productViewModel);
         }
 
         public IActionResult Details(int id)
