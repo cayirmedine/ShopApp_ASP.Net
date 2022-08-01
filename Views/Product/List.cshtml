@@ -1,36 +1,29 @@
 ﻿@model ShopApp.WebUI.ViewModels.ProductViewModel
 
-@{ 
-    Layout = "_Layout2";
-}
-
-@{ 
+@{
     var popularClass = Model.Products.Count > 2 ? "popular" : "";
     var products = Model.Products;
 }
 
-<div class="row">
-    <div class="col-md-3">
-        @await Component.InvokeAsync("Categories")
-    </div>
-    <div class="col-md-9">
+@section Categories
+{
+    @await Component.InvokeAsync("Categories")
+}
 
-        @if (products.Count == 0)
+@if (products.Count == 0)
+{
+    @await Html.PartialAsync("_NoProduct")
+}
+else
+{
+    <div class="row">
+
+        @foreach (var product in products)
         {
-            @await Html.PartialAsync("_NoProduct")
-        }
-        else
-        {
-            <div class="row">
-
-                @foreach (var product in products)
-                {
-                    <div class="col-md-3">
-                        @await Html.PartialAsync("_Product", product)
-                    </div>
-                }
-
+            <div class="col-md-3">
+                @await Html.PartialAsync("_Product", product)
             </div>
         }
+
     </div>
-</div>
+}
