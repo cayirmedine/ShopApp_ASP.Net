@@ -37,9 +37,16 @@ namespace ShopApp.WebUI.Controllers
             var category = new Category { Name = "Phones", Description = "Phone Category" };
             //ViewBag.Category = category;
 
+            var categories = new List<Category>()
+            {
+                new Category { Name="Phones", Description="Phone Category" },
+                new Category { Name="Computer", Description="Computer Category" },
+                new Category { Name="Electronic", Description="Electronic Category" }
+            };
+
             var productViewModel = new ProductViewModel()
             {
-                Category = category,
+                Categories = categories,
                 Products = products
             };
 
