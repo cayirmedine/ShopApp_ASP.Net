@@ -1,89 +1,36 @@
 ﻿@model ShopApp.WebUI.ViewModels.ProductViewModel
 
 @{ 
+    Layout = "_Layout2";
+}
+
+@{ 
     var popularClass = Model.Products.Count > 2 ? "popular" : "";
     var products = Model.Products;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Product</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <style>
-        .popular {
-            color: green;
-            font-weight: 700;
+<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("Categories")
+    </div>
+    <div class="col-md-9">
+
+        @if (products.Count == 0)
+        {
+            @await Html.PartialAsync("_NoProduct")
         }
-    </style>
-</head>
-<body>
-    @await Html.PartialAsync("_Navbar") 
-    @*@await Html.PartialAsync("_Header")*@ 
-    <partial name="_Header">
-
-    <main>
-        <div class="container">
-
+        else
+        {
             <div class="row">
-                <div class="col-md-3">
-                    @await Component.InvokeAsync("Categories")
-                </div>
-                <div class="col-md-9">
 
-                    @if (products.Count == 0)
-                    {
-                        @await Html.PartialAsync("_NoProduct")
-                    }
-                    else
-                    {
-                        <div class="row">
+                @foreach (var product in products)
+                {
+                    <div class="col-md-3">
+                        @await Html.PartialAsync("_Product", product)
+                    </div>
+                }
 
-                            @foreach (var product in products)
-                            {
-                                <div class="col-md-3">
-                                    @await Html.PartialAsync("_Product", product)
-                                </div>
-                            }
-
-                        </div>
-                    }
-                </div>
             </div>
-
-            @*<h3>@ViewBag.Category</h3>*@
-
-            @*<h3>@ViewBag.Category.Name</h3>
-
-                <div>
-                    <p>@Model[0].Name</p>
-                    <p>@Model[0].Price</p>
-                    <p>@Model[0].Description</p>
-                </div>
-
-                <div>
-                    <p>@Model[1].Name</p>
-                    <p>@Model[1].Price</p>
-                    <p>@Model[1].Description</p>
-                </div>*@ 
-
-        </div>
-    </main>
-
-    @*<div>
-            <p>@Model.Products[0].Name</p>
-            <p>@Model.Products[0].Price</p>
-            <p>@Model.Products[0].Description</p>
-        </div>
-
-        <div>
-            <p>@Model.Products[1].Name</p>
-            <p>@Model.Products[1].Price</p>
-            <p>@Model.Products[1].Description</p>
-        </div>*@
-
-</body>
-</html>
+        }
+    </div>
+</div>

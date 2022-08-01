@@ -1,30 +1,8 @@
-﻿
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Product</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-<body>
-    @await Html.PartialAsync("_Navbar")
-    @* <h1>@ViewData["Category"]</h1>
-        <h4>@(((Product)ViewData["Product"]).Name)</h4>
-        <h4>@(((Product)ViewData["Product"]).Price)</h4>
-        <h4>@(((Product)ViewData["Product"]).Description)</h4> *@
-
-    @* <h1>@ViewBag.Category</h1>
-        <h4>@ViewBag.Product.Name</h4>
-        <h4>@ViewBag.Product.Price</h4>
-        <h4>@ViewBag.Product.Description</h4> *@
-
-    <h1>@ViewBag.Category</h1>
-    <h4>@Model.Name</h4>
-    <h4>@Model.Price</h4>
-    <h4>@Model.Description</h4>
-
-
-</body>
-</html>
+﻿<div class="row">
+    <div class="col-md-3">
+        @await Component.InvokeAsync("Categories")
+    </div>
+    <div class="col-md-9">
+        Product Index
+    </div>
+</div>
