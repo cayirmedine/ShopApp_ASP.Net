@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShopApp.WebUI.Models;
+using ShopApp.WebUI.Data;
 
 namespace ShopApp.WebUI.ViewComponents
 {
@@ -11,12 +12,7 @@ namespace ShopApp.WebUI.ViewComponents
     {
         public IViewComponentResult Invoke()
         {
-            var categories = new List<Category>()
-            {
-
-            };
-
-            return View(categories);
+            return View(CategoryRepository.Categories);
         }
     }
 }

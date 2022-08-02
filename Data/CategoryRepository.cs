@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ShopApp.WebUI.Models;
 
 namespace ShopApp.WebUI.Data
 {
-    public class CatgeoryRepository
+    public class CategoryRepository
     {
         private static List<Category> _categories = null;
 

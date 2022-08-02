@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ShopApp.WebUI.Models;
 using ShopApp.WebUI.ViewModels;
+using ShopApp.WebUI.Data;
 
 namespace ShopApp.WebUI.Controllers
 {
@@ -12,24 +13,10 @@ namespace ShopApp.WebUI.Controllers
     {
         public IActionResult Index()
         {
-            var products = new List<Product>()
-            {
-                new Product { Name="Iphone 8", Price=3000, Description="Iphone", isApproved=true },
-                new Product { Name="Iphone X", Price=6000, Description="Iphone", isApproved=true },
-                new Product { Name="Iphone 11", Price=9000, Description="Iphone" }
-            };
-
-            //ViewBag.Category = "Phones";
-
-            var category = new Category { Name = "Phones", Description = "Phone Category" };
-            //ViewBag.Category = category;
-
             var productViewModel = new ProductViewModel()
             {
-                Products = products
+                Products = ProductRepository.Products
             };
-
-            //return View(products);
 
             return View(productViewModel);
         }

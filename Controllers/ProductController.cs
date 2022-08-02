@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ShopApp.WebUI.Models; //import
 using ShopApp.WebUI.ViewModels;
+using ShopApp.WebUI.Data;
 
 namespace ShopApp.WebUI.Controllers
 {
@@ -25,19 +26,9 @@ namespace ShopApp.WebUI.Controllers
 
         public IActionResult List()
         {
-            var products = new List<Product>()
-            {
-               
-            };
-
-            //ViewBag.Category = "Phones";
-
-            var category = new Category { Name = "Phones", Description = "Phone Category" };
-            //ViewBag.Category = category;
-
             var productViewModel = new ProductViewModel()
             {
-                Products = products
+                Products = ProductRepository.Products
             };
 
             //return View(products);
