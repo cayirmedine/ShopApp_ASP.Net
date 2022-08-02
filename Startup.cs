@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace ShopApp.WebUI
 {
@@ -23,6 +25,12 @@ namespace ShopApp.WebUI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseStaticFiles(); //accessable wwwroot 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "node_modules")),
+                    RequestPath = "/modules"
+            });
 
             if (env.IsDevelopment())
             {
