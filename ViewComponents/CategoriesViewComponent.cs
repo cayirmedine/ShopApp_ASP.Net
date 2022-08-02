@@ -13,9 +13,7 @@ namespace ShopApp.WebUI.ViewComponents
         {
             var categories = new List<Category>()
             {
-                new Category { Name="Phones", Description="Phone Category" },
-                new Category { Name="Computer", Description="Computer Category" },
-                new Category { Name="Electronic", Description="Electronic Category" }
+
             };
 
             return View(categories);
